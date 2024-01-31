@@ -1,4 +1,14 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserStore";
+
 const OrderSummary = ({ review }) => {
+  const { user } = useContext(UserContext);
+  const handleBuyNow = (e) => {
+    e.preventDefault();
+    window.location.href = "/order/confirmation";
+  };
+
   return (
     <div className="md:px-6 px-2 mt-[20px] md:mt-0">
       {/* container  */}
@@ -77,12 +87,22 @@ const OrderSummary = ({ review }) => {
               </select>
             </div>
 
-            <button
-              type="submit"
-              className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Confirm You Order
-            </button>
+            {user ? (
+              <button
+                type="submit"
+                onClick={handleBuyNow}
+                className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Confirm You Order
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                <Link to="auth/sign-in">Confirm You Order</Link>
+              </button>
+            )}
           </form>
         </div>
       </div>

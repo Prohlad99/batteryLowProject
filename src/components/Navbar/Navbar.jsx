@@ -4,7 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { IoCallOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import avater from "../../assets/products/riceCooker.png";
+import avater from "../../assets/images/me.png";
 import { CartContext } from "../../context/CartStore";
 import { NavItems as Items } from "../../utilities/NavItems";
 import { UserContext } from "./../../context/UserStore";

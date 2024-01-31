@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import SignUp from "../components/auth/SignUp";
 import SignIn from "../components/auth/Signin";
+import Congra from "../components/congra/Congra";
 import Cart from "../pages/Cart";
 import Category from "../pages/Category";
 import FlashSaleProducts from "../pages/FlashSaleProducts";
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
   {
     path: "auth/sign-in",
     element: <SignIn />,
+  },
+  {
+    path: "order/confirmation",
+    element: <Congra />,
   },
   {
     path: "auth/sign-up",
