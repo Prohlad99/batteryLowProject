@@ -12,7 +12,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Hero = () => {
-  const [images, setImages] = useState([img1, img2, img3, img4, img5]);
+  const [images] = useState([img1, img2, img3, img4, img5]);
   return (
     <div>
       <div className="grid grid-cols-12  gap-6 mt-4 h-[301px] md:mx-10 mx-2">
@@ -21,10 +21,12 @@ export const Hero = () => {
             <ul className="bg-white inline-block py-3 pl-3 pr-10 rounded-[15px] ">
               {Items.map((item, key) => (
                 <li key={key} className="my-2">
-                  <Link to="#">
+                  <Link to={`products/category/${item.name}`}>
                     <span className="flex items-center gap-2">
-                      <span>{item.icon}</span>
-                      <span>{item.name}</span>
+                      <span>{item?.icon}</span>
+                      <span>
+                        {item?.name[0].toUpperCase() + item?.name.slice(1)}
+                      </span>
                     </span>
                   </Link>
                 </li>

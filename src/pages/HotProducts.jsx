@@ -1,18 +1,16 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import ProductCard from "../components/Products/ProductCard";
 
-const Category = () => {
-  const { categoryName } = useParams();
+const HotProducts = () => {
   const [productsData, setProductsData] = useState([]);
 
   // fetch category products
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
+    fetch(`https://fakestoreapi.com/products`)
       .then((res) => res.json())
       .then((data) => setProductsData(data));
   }, []);
@@ -69,4 +67,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default HotProducts;

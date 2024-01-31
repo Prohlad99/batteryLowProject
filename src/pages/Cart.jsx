@@ -13,7 +13,7 @@ const Cart = () => {
   let price = 0.0;
 
   for (let i = 0; i < cart?.length; i++) {
-    price += cart[i]?.cPrice * cart[i]?.quantity;
+    price += cart[i]?.price * cart[i]?.quantity * 80;
     selectedProducts += cart[i]?.quantity;
   }
   return (

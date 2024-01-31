@@ -19,8 +19,6 @@ const FlashSale = () => {
     });
   }, []);
 
-  console.log(productsData);
-
   return (
     <div className=" w-full h-auto px-2 md:px-10">
       <div className="grid items-center h-auto border-b-[1px] py-3  bg-white px-4 rounded-t-[15px] border-blue-400">

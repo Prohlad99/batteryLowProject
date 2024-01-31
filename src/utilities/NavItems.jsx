@@ -1,45 +1,25 @@
-import { FiWatch } from "react-icons/fi";
+import { GiPoloShirt, GiRingBox } from "react-icons/gi";
+import { MdOutlineElectricBolt } from "react-icons/md";
 import { PiDress } from "react-icons/pi";
-
 export const NavItems = [
   {
     id: 1,
-    name: "Women & Girls Fashion",
-    icon: <PiDress />,
+    name: "electronics",
+    icon: <MdOutlineElectricBolt />,
   },
   {
     id: 2,
-    name: "Watch's Bags & Jewellery",
-    icon: <FiWatch />,
+    name: "jewelery",
+    icon: <GiRingBox />,
   },
   {
     id: 3,
-    name: "Kid's & Men's Fashion",
-    icon: <FiWatch />,
+    name: "men's clothing",
+    icon: <GiPoloShirt />,
   },
   {
     id: 4,
-    name: "Kitchen Products",
-    icon: <FiWatch />,
-  },
-  {
-    id: 5,
-    name: "Household & Outdoor",
-    icon: <FiWatch />,
-  },
-  {
-    id: 6,
-    name: "TC & Home Appliences",
-    icon: <FiWatch />,
-  },
-  {
-    id: 7,
-    name: "Electronic Accessories ",
-    icon: <FiWatch />,
-  },
-  {
-    id: 8,
-    name: "Gadget & Accessories",
-    icon: <FiWatch />,
+    name: "women's clothing",
+    icon: <PiDress />,
   },
 ];

@@ -23,7 +23,6 @@ const ProductDetails = () => {
   const { addToCart } = useContext(CartContext);
 
   const { productId } = useParams();
-  console.log(productId);
   const [productData, setProductData] = useState({});
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${productId}`)

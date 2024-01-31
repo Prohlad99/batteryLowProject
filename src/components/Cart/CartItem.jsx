@@ -22,9 +22,9 @@ const CartItem = () => {
           {/* item details  */}
           <div className="grid col-span-6 justify-start">
             <h1 className="md:font-bold text-sm md:text-base font-semibold text-center">
-              {product.title}
+              {product.title.slice(0, 20)}
             </h1>
-            <p className="my-1">Price: ${product.price} </p>
+            <p className="my-1">Price: {parseInt(product.price) * 80} ৳</p>
             <p className="hidden md:block">Off : 10%</p>
           </div>
 

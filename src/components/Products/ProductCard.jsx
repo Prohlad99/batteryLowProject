@@ -25,10 +25,10 @@ const ProductCard = (product) => {
         </div>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 my-2 md:my-1">
           <span className="md:text-xl text-base sm:text-lg mr-2 text-[#FF4747]">
-            ৳ {price}
+            ৳ {price * 80}
           </span>
           <sub>
-            <del>৳ {price * 2}</del>
+            <del>৳ {price * 80 + 90}</del>
           </sub>
         </p>
         <div className="w-full flex justify-center items-center">

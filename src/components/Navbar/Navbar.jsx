@@ -4,8 +4,10 @@ import { IoMdClose } from "react-icons/io";
 import { IoCallOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import avater from "../../assets/products/riceCooker.png";
 import { CartContext } from "../../context/CartStore";
 import { NavItems as Items } from "../../utilities/NavItems";
+import { UserContext } from "./../../context/UserStore";
 //top bar
 export const Top = () => {
   return (
@@ -21,6 +23,15 @@ export const Top = () => {
 // middle
 export const Middle = () => {
   const { cart } = useContext(CartContext);
+  const { user } = useContext(UserContext);
+  const [isOpenAvatar, setIsOpenAvatar] = useState(false);
+  //show the dropdown menu when click on the icon
+  const handleOpenAvatar = () => {
+    setIsOpenAvatar(!isOpenAvatar);
+  };
+
+  console.log(user);
+
   return (
     <div className="flex items-center justify-between gap-4 pr-4 md:pr-0 bg-white">
       <div className="h-[70px]  w-full grid grid-cols-12 bg-white md:px-10 px-1">
@@ -45,7 +56,32 @@ export const Middle = () => {
             </button>
           </div>
         </div>
-        <div className="col-span-1 place-self-center justify-self-end">
+        <div className="flex items-center gap-5 col-span-1 place-self-center justify-self-end">
+          <div className="relative hidden md:block">
+            {user ? (
+              <div
+                onClick={() => handleOpenAvatar()}
+                className="h-[40px] cursor-pointer overflow-hidden w-[40px] border-[1px] border-red-400 rounded-full"
+              >
+                <img className="h-[39px] w-[39px]" src={avater} alt="" />
+              </div>
+            ) : (
+              <button className="border-[1px] px-2 py-1 rounded-full mt-4 text-xs">
+                Sign In
+              </button>
+            )}
+            {isOpenAvatar && (
+              <div className="rounded-md overflow-hidden shadow-lg -bottom-[120px] font-semibold absolute text-center -left-12 bg-blue-500 p-3  w-[150px] z-50">
+                <small>Prohlad Mandal</small>
+                <br />
+                <small>prohlad.m99@gmail.com</small>
+                <br />
+                <button className="border-[1px] px-2 py-1 rounded-full mt-4 text-xs">
+                  Sing Out
+                </button>
+              </div>
+            )}
+          </div>
           <Link to="/cart">
             <div className="relative">
               <img
@@ -67,6 +103,12 @@ export const Middle = () => {
 const Navbar = () => {
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isOpenAvatar, setIsOpenAvatar] = useState(false);
+  const { user } = useContext(UserContext);
+  //show the dropdown menu when click on the icon
+  const handleOpenAvatar = () => {
+    setIsOpenAvatar(!isOpenAvatar);
+  };
 
   const handleDropDown = () => {
     setIsCategoryOpen(!isCategoryOpen);
@@ -87,7 +129,7 @@ const Navbar = () => {
             <Link to="/">
               <img
                 className="w-[150px]"
-                src="/assets/logo/logo.png"
+                src="../../../src/assets/logo/logo.png"
                 alt="brand logo"
               />
             </Link>
@@ -142,10 +184,10 @@ const Navbar = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li className="my-2">
-                  <Link to="#">Flash Sale</Link>
+                  <Link to="/flash-sale">Flash Sale</Link>
                 </li>
                 <li className="my-2">
-                  <Link to="#">Hot Product</Link>
+                  <Link to="/hot-products">Hot Product</Link>
                 </li>
                 <li className="my-2">
                   <Link to="#">Shop</Link>
@@ -164,6 +206,37 @@ const Navbar = () => {
               </ul>
             </li>
           </ul>
+          <div>
+            {/* avatar */}
+            {user ? (
+              <div className="relative md:hidden">
+                <div
+                  onClick={() => handleOpenAvatar()}
+                  className="h-[40px] cursor-pointer overflow-hidden w-[40px] border-[1px] border-red-400 rounded-full"
+                >
+                  <img
+                    className="h-[39px] w-[39px]"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                </div>
+                {isOpenAvatar && (
+                  <div className="rounded-md overflow-hidden shadow-lg -bottom-[120px] font-semibold absolute text-center -left-12 bg-blue-500 p-3  w-[150px] z-50">
+                    <small>{user.displayName}</small>
+                    <br />
+                    <small>prohlad.m99@gmail.com</small>
+                    <br />
+                    <button className="border-[1px] px-2 py-1 rounded-full mt-4 text-xs">
+                      Sing Out
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button>Sign In</button>
+            )}
+            {/* end avatar  */}
+          </div>
           <div className="mr-2 md:hidden">
             {isNavOpen ? (
               <button onClick={handleNav} className="text-4xl text-black">
