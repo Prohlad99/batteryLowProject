@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import SignUp from "../components/auth/SignUp";
-import SignIn from "../components/auth/Signin";
+import SignIn from "../components/auth/SignIn";
 import Congra from "../components/congra/Congra";
 import Cart from "../pages/Cart";
 import Category from "../pages/Category";
